@@ -79,6 +79,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         logView();
         mXINPUTListener();
         mYOUTPUTListener();
+
     }
 
 
@@ -703,107 +704,110 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     Y07.setText(snapshot.child("Y07").getValue().toString());
                 }
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
+        if (master) {
+            X00.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X00");
+                    return true;
+                }
+            });
+            X01.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X01");
+                    return true;
+                }
+            });
+            X02.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X02");
+                    return true;
+                }
+            });
+            X03.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X03");
+                    return true;
+                }
+            });
+            X04.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X04");
+                    return true;
+                }
+            });
+            X05.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X05");
+                    return true;
+                }
+            });
+            X06.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X06");
+                    return true;
+                }
+            });
+            X07.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("X07");
+                    return true;
+                }
+            });
 
-        X00.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X00");
-                return true;
-            }
-        });
-        X01.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X01");
-                return true;
-            }
-        });
-        X02.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X02");
-                return true;
-            }
-        });
-        X03.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X03");
-                return true;
-            }
-        });
-        X04.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X04");
-                return true;
-            }
-        });
-        X05.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X05");
-                return true;
-            }
-        });
-        X06.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X06");
-                return true;
-            }
-        });
-        X07.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("X07");
-                return true;
-            }
-        });
-
-        Y00.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y00");
-                return true;
-            }
-        });
-        Y01.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y01");
-                return true;
-            }
-        });
-        Y02.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y02");
-                return true;
-            }
-        });
-        Y03.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y03");
-                return true;
-            }
-        });
-        Y04.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y04");
-                return true;
-            }
-        });
-        Y05.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y05");
-                return true;
-            }
-        });
-        Y06.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y06");
-                return true;
-            }
-        });
-        Y07.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                showDialog("Y07");
-                return true;
-            }
-        });
+            Y00.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y00");
+                    return true;
+                }
+            });
+            Y01.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y01");
+                    return true;
+                }
+            });
+            Y02.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y02");
+                    return true;
+                }
+            });
+            Y03.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y03");
+                    return true;
+                }
+            });
+            Y04.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y04");
+                    return true;
+                }
+            });
+            Y05.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y05");
+                    return true;
+                }
+            });
+            Y06.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y06");
+                    return true;
+                }
+            });
+            Y07.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    showDialog("Y07");
+                    return true;
+                }
+            });
+        }
     }
     private void showDialog(final String PINOUT) {
         final EditText input = new EditText(this);
