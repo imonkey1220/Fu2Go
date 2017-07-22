@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     private void getDevices() {
         RecyclerView RV4 = (RecyclerView) findViewById(R.id.RV4);
         RV4.setLayoutManager(new LinearLayoutManager(this));
-        Query refDevice = FirebaseDatabase.getInstance().getReference("DEVICE").child("/users/"+memberEmail.replace(".", "_")).equalTo(memberEmail);
+        Query refDevice = FirebaseDatabase.getInstance().getReference("DEVICE").orderByChild("/users/"+memberEmail.replace(".", "_")).equalTo(memberEmail);
         mDeviceAdapter = new FirebaseRecyclerAdapter<Device, MessageHolder>(
                 Device.class,
                 R.layout.device_layout,

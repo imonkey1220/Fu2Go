@@ -91,18 +91,6 @@ public class AddUserActivity extends AppCompatActivity {
         String username = editTextAddUser.getText().toString().trim();
         String description = editTextAddDescription.getText().toString().trim();
         if (!(TextUtils.isEmpty(companyId) ||TextUtils.isEmpty(username)||TextUtils.isEmpty(description))) {
-            mAddMaster= FirebaseDatabase.getInstance().getReference("/FUI/" +memberEmail.replace(".", "_"));
-            deviceId =mAddMaster.push().getKey();
-            Map<String, Object> addMaster = new HashMap<>();
-            addMaster.put("companyId",companyId) ;
-            addMaster.put("device",username);
-            addMaster.put("deviceType","主機");
-            addMaster.put("description",description);
-            addMaster.put("masterEmail",memberEmail) ;
-            addMaster.put("timeStamp", ServerValue.TIMESTAMP);
-            addMaster.put("topics_id",deviceId) ;
-            mAddMaster.child(deviceId).setValue(addMaster);
-
             mAddDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
             Map<String, Object> addDevice = new HashMap<>();
             addDevice.put("companyId",companyId);
@@ -116,7 +104,6 @@ public class AddUserActivity extends AppCompatActivity {
             addDevice.put("timeStamp",ServerValue.TIMESTAMP);
             addDevice.put("topics_id",deviceId) ;
             mAddDevice.setValue(addDevice);
-
 
             mUserFile= FirebaseDatabase.getInstance().getReference("/USER/" +memberEmail.replace(".", "_"));
             token = FirebaseInstanceId.getInstance().getToken();

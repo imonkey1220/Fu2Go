@@ -148,17 +148,6 @@ public class AddThingsDeviceActivity extends AppCompatActivity {
     }
 
     private void toFirebase(){
-        DatabaseReference mAddMaster= FirebaseDatabase.getInstance().getReference("/FUI/" +memberEmail.replace(".", "_"));
-        deviceId =mAddMaster.push().getKey();
-        Map<String, Object> addMaster = new HashMap<>();
-        addMaster.put("companyId",companyId) ;
-        addMaster.put("device",device);
-        addMaster.put("deviceType",deviceType); //PLC監控機;GPIO智慧機
-        addMaster.put("description",description);
-        addMaster.put("masterEmail",memberEmail) ;
-        addMaster.put("timeStamp", ServerValue.TIMESTAMP);
-        addMaster.put("topics_id",deviceId);
-        mAddMaster.child(deviceId).setValue(addMaster);
 
         DatabaseReference mAddDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
         Map<String, Object> addDevice = new HashMap<>();
