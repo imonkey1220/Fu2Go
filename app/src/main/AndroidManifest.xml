@@ -33,7 +33,7 @@
             </intent-filter>
         </service>
         <!-- [END firebase_iid_service] -->
-        <!-- [START firebase_service] -->
+        <!-- [START firebase_messageing_service] -->
         <service
             android:name="tw.imonkey.fu2go.FirebaseMessagingService"
             android:exported="false">
@@ -43,7 +43,7 @@
         </service>
         <!-- [END firebase_service] -->
         <service
-            android:name="tw.imonkey.fu2go.IIDJobService"
+            android:name="tw.imonkey.fu2go.myJobService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />

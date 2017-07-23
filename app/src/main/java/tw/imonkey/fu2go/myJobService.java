@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
 
-public class IIDJobService extends com.firebase.jobdispatcher.JobService {
+public class myJobService extends com.firebase.jobdispatcher.JobService {
 
     private static final String TAG = "JobService";
 
