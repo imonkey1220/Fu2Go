@@ -148,8 +148,7 @@ public class AddThingsDeviceActivity extends AppCompatActivity {
     }
 
     private void toFirebase(){
-
-        DatabaseReference mAddDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
+        DatabaseReference mAddDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/");
         deviceId =mAddDevice.push().getKey();
         Map<String, Object> addDevice = new HashMap<>();
         addDevice.put("companyId",companyId);
@@ -162,7 +161,7 @@ public class AddThingsDeviceActivity extends AppCompatActivity {
         addDevice.put("users",user);
         addDevice.put("timeStamp",ServerValue.TIMESTAMP);
         addDevice.put("topics_id",deviceId) ;
-        mAddDevice.setValue(addDevice);
+        mAddDevice.child(deviceId).setValue(addDevice);
 
         if (selectedImage != null) {
             uploadPhoto(selectedImage);
