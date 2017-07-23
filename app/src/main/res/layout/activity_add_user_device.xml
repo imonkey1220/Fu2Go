@@ -33,6 +33,14 @@
             android:inputType="textPersonName" />
 
         <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="手機號碼"
+            android:inputType="phone" />
+
+        <EditText
             android:id="@+id/editTextAddCompanyId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

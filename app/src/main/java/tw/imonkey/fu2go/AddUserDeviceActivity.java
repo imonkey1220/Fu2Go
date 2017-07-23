@@ -47,7 +47,7 @@ public class AddUserDeviceActivity extends AppCompatActivity {
     EditText editTextAddCompanyId;
     EditText editTextAddUser;
     EditText editTextAddDescription;
-
+    EditText editTextAddPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,7 @@ public class AddUserDeviceActivity extends AppCompatActivity {
         editTextAddCompanyId = (EditText) (findViewById(R.id.editTextAddCompanyId));
         editTextAddUser = (EditText) (findViewById(R.id.editTextAddUser));
         editTextAddDescription = (EditText) (findViewById(R.id.editTextAddDescription));
-
+        editTextAddPhone = (EditText) (findViewById(R.id.editTextPhone));
         if (ContextCompat.checkSelfPermission(AddUserDeviceActivity.this,
                 READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -90,12 +90,14 @@ public class AddUserDeviceActivity extends AppCompatActivity {
         String companyId = editTextAddCompanyId.getText().toString().trim();
         String username = editTextAddUser.getText().toString().trim();
         String description = editTextAddDescription.getText().toString().trim();
-        if (!(TextUtils.isEmpty(companyId) ||TextUtils.isEmpty(username)||TextUtils.isEmpty(description))) {
+        String phone = editTextAddPhone.getText().toString().trim();
+        if (!(TextUtils.isEmpty(phone) ||TextUtils.isEmpty(username)||TextUtils.isEmpty(description))) {
             mAddUserDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/");
             deviceId =mAddUserDevice.push().getKey();
             Map<String, Object> addDevice = new HashMap<>();
             addDevice.put("companyId",companyId);
             addDevice.put("device",username);
+            addDevice.put("phone",phone);
             addDevice.put("deviceType","主機");
             addDevice.put("description",description);
             addDevice.put("masterEmail",memberEmail) ;
@@ -112,6 +114,7 @@ public class AddUserDeviceActivity extends AppCompatActivity {
             addUser.put("memberEmail",memberEmail);
             addUser.put("deviceId",deviceId);
             addUser.put("username",username);
+            addUser.put("phone",phone);
             addUser.put("token",token);
             addUser.put("timeStamp", ServerValue.TIMESTAMP);
             mAddUserFile.setValue(addUser);
