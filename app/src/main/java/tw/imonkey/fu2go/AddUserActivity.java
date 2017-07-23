@@ -40,7 +40,7 @@ public class AddUserActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE =102 ;
     //private static final int RC_IMAGE_PERMS = 103;
     StorageReference mImageRef;
-    DatabaseReference mUserFile, mAddDevice ,mAddMaster;
+    DatabaseReference mAddUserFile, mAddUserDevice;
     String memberEmail,deviceId ,token;// deviceId=shopId=topics_id
     ImageView imageViewAddUser;
     Uri selectedImage ;
@@ -91,7 +91,7 @@ public class AddUserActivity extends AppCompatActivity {
         String username = editTextAddUser.getText().toString().trim();
         String description = editTextAddDescription.getText().toString().trim();
         if (!(TextUtils.isEmpty(companyId) ||TextUtils.isEmpty(username)||TextUtils.isEmpty(description))) {
-            mAddDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
+            mAddUserDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
             Map<String, Object> addDevice = new HashMap<>();
             addDevice.put("companyId",companyId);
             addDevice.put("device",username);
@@ -103,9 +103,9 @@ public class AddUserActivity extends AppCompatActivity {
             addDevice.put("users",user);
             addDevice.put("timeStamp",ServerValue.TIMESTAMP);
             addDevice.put("topics_id",deviceId) ;
-            mAddDevice.setValue(addDevice);
+            mAddUserDevice.setValue(addDevice);
 
-            mUserFile= FirebaseDatabase.getInstance().getReference("/USER/" +memberEmail.replace(".", "_"));
+            mAddUserFile= FirebaseDatabase.getInstance().getReference("/USER/" +memberEmail.replace(".", "_"));
             token = FirebaseInstanceId.getInstance().getToken();
             Map<String, Object> addUser = new HashMap<>();
             addUser.put("memberEmail",memberEmail);
@@ -113,7 +113,7 @@ public class AddUserActivity extends AppCompatActivity {
             addUser.put("username",username);
             addUser.put("token",token);
             addUser.put("timeStamp", ServerValue.TIMESTAMP);
-            mUserFile.setValue(addUser);
+            mAddUserFile.setValue(addUser);
 
             FirebaseMessaging.getInstance().subscribeToTopic(deviceId);
             SharedPreferences.Editor editor = getSharedPreferences(devicePrefs, Context.MODE_PRIVATE).edit();

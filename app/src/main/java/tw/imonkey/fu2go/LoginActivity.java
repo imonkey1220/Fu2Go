@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivityForResult(AuthUI.getInstance()
                         .createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
-                        //   .setLogo(R.drawable.logo_googleg_color_144dp)
+                        .setIsSmartLockEnabled(true)
+                        .setLogo(R.drawable.ic_launcher)
                         .setProviders(Arrays.asList(
                                 new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                                 new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
