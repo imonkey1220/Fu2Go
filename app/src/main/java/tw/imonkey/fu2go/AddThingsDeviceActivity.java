@@ -150,6 +150,7 @@ public class AddThingsDeviceActivity extends AppCompatActivity {
     private void toFirebase(){
 
         DatabaseReference mAddDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
+        deviceId =mAddDevice.push().getKey();
         Map<String, Object> addDevice = new HashMap<>();
         addDevice.put("companyId",companyId);
         addDevice.put("device",device);

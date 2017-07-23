@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="tw.imonkey.fu2go.AddUserActivity" />
+        <activity android:name="tw.imonkey.fu2go.AddUserDeviceActivity" />
         <activity android:name="tw.imonkey.fu2go.BossActivity" />
         <activity android:name="tw.imonkey.fu2go.AddThingsDeviceActivity" />
 

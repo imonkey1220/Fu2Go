@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user!=null){
                     memberEmail=user.getEmail();
                     if(myDeviceId==null) {
-                        Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
+                        Intent intent = new Intent(MainActivity.this, AddUserDeviceActivity.class);
                         intent.putExtra("memberEmail", memberEmail);
                         startActivity(intent);
                         finish();

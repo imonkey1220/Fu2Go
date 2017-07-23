@@ -35,7 +35,7 @@ import java.util.Map;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static tw.imonkey.fu2go.MainActivity.devicePrefs;
 
-public class AddUserActivity extends AppCompatActivity {
+public class AddUserDeviceActivity extends AppCompatActivity {
     private static final int RC_CHOOSE_PHOTO = 101;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE =102 ;
     //private static final int RC_IMAGE_PERMS = 103;
@@ -51,7 +51,7 @@ public class AddUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_add_user_device);
         Bundle extras = getIntent().getExtras();
         memberEmail =extras.getString("memberEmail");
         imageViewAddUser=(ImageView)(findViewById(R.id.imageViewAddUser));
@@ -59,12 +59,12 @@ public class AddUserActivity extends AppCompatActivity {
         editTextAddUser = (EditText) (findViewById(R.id.editTextAddUser));
         editTextAddDescription = (EditText) (findViewById(R.id.editTextAddDescription));
 
-        if (ContextCompat.checkSelfPermission(AddUserActivity.this,
+        if (ContextCompat.checkSelfPermission(AddUserDeviceActivity.this,
                 READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(AddUserActivity.this,
+            if (ActivityCompat.shouldShowRequestPermissionRationale(AddUserDeviceActivity.this,
                     READ_EXTERNAL_STORAGE)) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
@@ -75,7 +75,7 @@ public class AddUserActivity extends AppCompatActivity {
 
                 // No explanation needed, we can request the permission.
 
-                ActivityCompat.requestPermissions(AddUserActivity.this,
+                ActivityCompat.requestPermissions(AddUserDeviceActivity.this,
                         new String[]{READ_EXTERNAL_STORAGE},
                         MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
 
@@ -92,6 +92,7 @@ public class AddUserActivity extends AppCompatActivity {
         String description = editTextAddDescription.getText().toString().trim();
         if (!(TextUtils.isEmpty(companyId) ||TextUtils.isEmpty(username)||TextUtils.isEmpty(description))) {
             mAddUserDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
+            deviceId =mAddUserDevice.push().getKey();
             Map<String, Object> addDevice = new HashMap<>();
             addDevice.put("companyId",companyId);
             addDevice.put("device",username);
@@ -114,7 +115,6 @@ public class AddUserActivity extends AppCompatActivity {
             addUser.put("token",token);
             addUser.put("timeStamp", ServerValue.TIMESTAMP);
             mAddUserFile.setValue(addUser);
-
             FirebaseMessaging.getInstance().subscribeToTopic(deviceId);
             SharedPreferences.Editor editor = getSharedPreferences(devicePrefs, Context.MODE_PRIVATE).edit();
             editor.putString("deviceId",deviceId);
@@ -162,10 +162,10 @@ public class AddUserActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         //      Log.d("TAG", "uploadPhoto:onSuccess:" +
                         //              taskSnapshot.getMetadata().getReference().getPath());
-                        Toast.makeText(AddUserActivity.this, "Image uploaded",
+                        Toast.makeText(AddUserDeviceActivity.this, "Image uploaded",
                                 Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(AddUserActivity.this,MainActivity.class);
+                        Intent intent = new Intent(AddUserDeviceActivity.this,MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -178,7 +178,7 @@ public class AddUserActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("TAG", "uploadPhoto:onError", e);
-                        Toast.makeText(AddUserActivity.this, "Upload failed",
+                        Toast.makeText(AddUserDeviceActivity.this, "Upload failed",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
