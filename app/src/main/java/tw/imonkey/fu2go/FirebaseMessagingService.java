@@ -36,7 +36,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
         // [END_EXCLUDE]
 
-        // TODO(developer): Handle FCM messages here.
+        // **Handle FCM messages here.
         sendNotification(remoteMessage.getNotification().getBody());
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
@@ -99,8 +99,8 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-       //         .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("FCM Message")
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("Fu2Go")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
