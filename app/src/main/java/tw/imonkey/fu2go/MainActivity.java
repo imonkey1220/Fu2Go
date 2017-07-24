@@ -48,7 +48,7 @@ import java.util.TimeZone;
 public class MainActivity extends AppCompatActivity {
     FirebaseRecyclerAdapter mDeviceAdapter;
     DatabaseReference mDelDevice,presenceRef,lastOnlineRef;
-    public static String memberEmail,myDeviceId,deviceId;
+    public static String memberEmail,myEmail,myDeviceId,deviceId;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
     Boolean exit = false;
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Taipei"));
         SharedPreferences settings = getSharedPreferences(devicePrefs, Context.MODE_PRIVATE);
         myDeviceId = settings.getString("deviceId",null);
+        myEmail = settings.getString("myEmail",null);
         if (getIntent().getExtras() != null) {
             for (String key : getIntent().getExtras().keySet()) {
                 Object value = getIntent().getExtras().get(key);
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (user!=null){
                     memberEmail=user.getEmail();
-                    if(myDeviceId==null) {
+                    if(myDeviceId==null||myEmail!=memberEmail) {
                         Intent intent = new Intent(MainActivity.this, AddUserDeviceActivity.class);
                         intent.putExtra("memberEmail", memberEmail);
                         startActivity(intent);

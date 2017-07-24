@@ -121,7 +121,7 @@ public class AddUserDeviceActivity extends AppCompatActivity {
             FirebaseMessaging.getInstance().subscribeToTopic(deviceId);
             SharedPreferences.Editor editor = getSharedPreferences(devicePrefs, Context.MODE_PRIVATE).edit();
             editor.putString("deviceId",deviceId);
-            editor.putString("memberEmail",memberEmail);
+            editor.putString("myEmail",memberEmail);
             editor.apply();
             if (selectedImage!=null) {
                 uploadPhoto(selectedImage);
