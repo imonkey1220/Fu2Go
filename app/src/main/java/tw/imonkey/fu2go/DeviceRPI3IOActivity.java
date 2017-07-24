@@ -164,6 +164,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         memberEmail = extras.getString("memberEmail");
         master = extras.getBoolean("master");
         mDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId);
+        mSETTINGS = FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId + "/SETTINGS");
         mLog=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/LOG/");
         mXINPUT= FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/X/");
         mYOUTPUT=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/Y/");
@@ -669,28 +670,59 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         });
     }
     private void SETTINGS() {
-        mSETTINGS = FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId + "/SETTINGS");
+
         mSETTINGS.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() != null) {
+                if (snapshot.child("X00").getValue() != null) {
                     X00.setText(snapshot.child("X00").getValue().toString());
+                }
+                if (snapshot.child("X01").getValue() != null) {
                     X01.setText(snapshot.child("X01").getValue().toString());
+                }
+                if (snapshot.child("X02").getValue() != null) {
                     X02.setText(snapshot.child("X02").getValue().toString());
+                }
+                if (snapshot.child("X03").getValue() != null) {
                     X03.setText(snapshot.child("X03").getValue().toString());
+                }
+                if (snapshot.child("X04").getValue() != null) {
                     X04.setText(snapshot.child("X04").getValue().toString());
+                }
+                if (snapshot.child("X05").getValue() != null) {
                     X05.setText(snapshot.child("X05").getValue().toString());
+                }
+                if (snapshot.child("X06").getValue() != null) {
                     X06.setText(snapshot.child("X06").getValue().toString());
+                }
+                if (snapshot.child("X07").getValue() != null) {
                     X07.setText(snapshot.child("X07").getValue().toString());
+                }
+                if (snapshot.child("Y00").getValue() != null) {
                     Y00.setText(snapshot.child("Y00").getValue().toString());
+                }
+                if (snapshot.child("Y01").getValue() != null) {
                     Y01.setText(snapshot.child("Y01").getValue().toString());
+                }
+                if (snapshot.child("Y02").getValue() != null) {
                     Y02.setText(snapshot.child("Y02").getValue().toString());
+                }
+                if (snapshot.child("Y03").getValue() != null) {
                     Y03.setText(snapshot.child("Y03").getValue().toString());
+                }
+                if (snapshot.child("Y04").getValue() != null) {
                     Y04.setText(snapshot.child("Y04").getValue().toString());
+                }
+                if (snapshot.child("Y05").getValue() != null) {
                     Y05.setText(snapshot.child("Y05").getValue().toString());
+                }
+                if (snapshot.child("Y06").getValue() != null) {
                     Y06.setText(snapshot.child("Y06").getValue().toString());
+                }
+                if (snapshot.child("Y07").getValue() != null) {
                     Y07.setText(snapshot.child("Y07").getValue().toString());
                 }
+
             }
 
             @Override
@@ -805,7 +837,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                 .setView(input)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        mSETTINGS.child(PINOUT).setValue(input.getText());
+                        mSETTINGS.child(PINOUT).setValue(input.getText().toString());
                     }
                 })
                 .show();
