@@ -71,9 +71,6 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         Y05=(Switch) findViewById(R.id.switchY05);
         Y06=(Switch) findViewById(R.id.switchY06);
         Y07=(Switch) findViewById(R.id.switchY07);
-        mLog=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/LOG/");
-        mXINPUT= FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/X/");
-        mYOUTPUT=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/Y/");
         init();
         SETTINGS();
         logView();
@@ -128,6 +125,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_del_friend:
+                users.remove(users.indexOf(memberEmail));//remove boss
                 AlertDialog.Builder dialog_list = new AlertDialog.Builder(DeviceRPI3IOActivity.this);
                 dialog_list.setTitle("選擇要刪除的朋友");
                 dialog_list.setItems(users.toArray(new String[0]), new DialogInterface.OnClickListener() {
@@ -139,6 +137,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                             public void onDataChange(DataSnapshot snapshot) {
                                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                                     childSnapshot.getRef().removeValue();
+                                    users.add(memberEmail);//add boss
                                 }
                             }
 
@@ -165,6 +164,9 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         memberEmail = extras.getString("memberEmail");
         master = extras.getBoolean("master");
         mDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId);
+        mLog=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/LOG/");
+        mXINPUT= FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/X/");
+        mYOUTPUT=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/Y/");
         mDevice.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -195,21 +197,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-/*
-        mFriends=FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId+"/friend/");
-        mFriends.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                friends.clear();
-                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                    friends.add(childSnapshot.getValue().toString());
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-        */
+
     }
     private void log(String message) {
         log.clear();

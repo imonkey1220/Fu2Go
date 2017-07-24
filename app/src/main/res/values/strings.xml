@@ -11,8 +11,6 @@
     <string name="input_Device_Desc">公司簡介</string>
     <string name="action_add_friend">加朋友</string>
     <string name="action_del_friend">刪朋友</string>
-    <string name="title_activity_control">ControlActivity</string>
-    <string name="section_format">Hello World from section: %1$d</string>
     <string name="Device_Photo">Photo</string>
 
     <string name="action_settings">設定</string>
