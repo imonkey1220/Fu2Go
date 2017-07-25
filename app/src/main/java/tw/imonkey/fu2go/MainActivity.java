@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (user!=null){
                     memberEmail=user.getEmail();
-                    if(myDeviceId==null||myEmail!=memberEmail) {
+                    if(myDeviceId==null||!myEmail.equals(memberEmail)) {
                         Intent intent = new Intent(MainActivity.this, AddUserDeviceActivity.class);
                         intent.putExtra("memberEmail", memberEmail);
                         startActivity(intent);
