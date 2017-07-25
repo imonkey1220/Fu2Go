@@ -106,7 +106,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(DeviceRPI3IOActivity.this);
                 LayoutInflater inflater = LayoutInflater.from(DeviceRPI3IOActivity.this);
                 final View v = inflater.inflate(R.layout.add_friend, userView, false);
-                dialog.setTitle("邀請朋友加入服務");
+                dialog.setTitle("邀請朋友加入服務機");
                 dialog.setView(v);
                 dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
