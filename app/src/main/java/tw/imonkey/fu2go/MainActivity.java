@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //google play:https://play.google.com/store/apps/details?id=tw.imonkey.fu2go&rdid=tw.imonkey.fu2go
-/*
+
         PackageInfo info;
         try{
             info = getPackageManager().getPackageInfo("tw.imonkey.fu2go", PackageManager.GET_SIGNATURES);
@@ -72,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
                 md.update(signature.toByteArray());
                 String KeyResult =new String(Base64.encode(md.digest(),0));//String something = new String(Base64.encodeBytes(md.digest()));
                 Log.e("hash key", KeyResult);
-                Toast.makeText(this,"My FB Key is \n"+ KeyResult , Toast.LENGTH_LONG ).show();
+               //Toast.makeText(this,"My FB Key is \n"+ KeyResult , Toast.LENGTH_LONG ).show();
             }
         }catch(PackageManager.NameNotFoundException e1){Log.e("name not found", e1.toString());
         }catch(NoSuchAlgorithmException e){Log.e("no such an algorithm", e.toString());
         }catch(Exception e){Log.e("exception", e.toString());}
-*/
+
 
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Taipei"));
         SharedPreferences settings = getSharedPreferences(devicePrefs, Context.MODE_PRIVATE);
