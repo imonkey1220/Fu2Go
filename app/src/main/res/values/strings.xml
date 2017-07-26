@@ -53,4 +53,6 @@
     <string name="terms_of_service">Terms of Service</string>
     <!-- facebook sign up -->
     <string name="facebook_application_id" translatable="false">823959004422329</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>
