@@ -103,12 +103,12 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_friend:
-                AlertDialog.Builder dialog = new AlertDialog.Builder(DeviceRPI3IOActivity.this);
+                AlertDialog.Builder dialog_add = new AlertDialog.Builder(DeviceRPI3IOActivity.this);
                 LayoutInflater inflater = LayoutInflater.from(DeviceRPI3IOActivity.this);
                 final View v = inflater.inflate(R.layout.add_friend, userView, false);
-                dialog.setTitle("邀請朋友加入智慧機服務");
-                dialog.setView(v);
-                dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                dialog_add.setTitle("邀請朋友加入智慧機服務");
+                dialog_add.setView(v);
+                dialog_add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         final EditText editTextAddFriendEmail = (EditText) (v.findViewById(R.id.editTextAddFriendEmail));
@@ -120,15 +120,14 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-                dialog.show();
-
+                dialog_add.show();
                 return true;
 
             case R.id.action_del_friend:
                 users.remove(users.indexOf(memberEmail));//remove boss
-                AlertDialog.Builder dialog_list = new AlertDialog.Builder(DeviceRPI3IOActivity.this);
-                dialog_list.setTitle("選擇要刪除的朋友");
-                dialog_list.setItems(users.toArray(new String[0]), new DialogInterface.OnClickListener() {
+                AlertDialog.Builder dialog_del = new AlertDialog.Builder(DeviceRPI3IOActivity.this);
+                dialog_del.setTitle("選擇要刪除的朋友");
+                dialog_del.setItems(users.toArray(new String[0]), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(DeviceRPI3IOActivity.this, "你要刪除是" + users.get(which), Toast.LENGTH_SHORT).show();
@@ -148,7 +147,38 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                         users.remove(which);
                     }
                 });
-                dialog_list.show();
+                dialog_del.show();
+                return true;
+            case R.id.action_SETTINGS:
+                final CharSequence[] items = {"EMAIL","PUSH","SMS"};
+// arraylist to keep the selected items
+                final ArrayList<Integer> seletedItems=new ArrayList<>();
+                AlertDialog dialog_settings = new AlertDialog.Builder(this)
+                                    .setTitle("訊息通知設定")
+                                    .setMultiChoiceItems(items,null, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
+                                if (isChecked) {
+                                    // If the user checked the item, add it to the selected items
+                                    seletedItems.add(indexSelected);
+                                } else if (seletedItems.contains(indexSelected)) {
+                                    // Else, if the item is already in the array, remove it
+                                    seletedItems.remove(Integer.valueOf(indexSelected));
+                                }
+                            }
+                        }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Your code when user clicked on OK
+                                //  You can write the code  to save the selected item here
+                            }
+                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Your code when user clicked on Cancel
+                            }
+                        }).create();
+                dialog_settings.show();
                 return true;
 
             default:
