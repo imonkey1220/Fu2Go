@@ -38,6 +38,8 @@ import java.util.TimeZone;
 public class DeviceRPI3IOActivity extends AppCompatActivity {
     public static final String devicePrefs = "devicePrefs";
     public static final String service="RPI3IO"; //GPIO智慧機 deviceType
+    CharSequence[] items = {"EMAIL","PUSH","SMS"};
+    boolean[] checkedValues = new boolean[items.length];
     String deviceId, memberEmail;
     boolean master;
     ArrayList<String> users = new ArrayList<>();
@@ -150,20 +152,22 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                 dialog_del.show();
                 return true;
             case R.id.action_SETTINGS:
-                final CharSequence[] items = {"EMAIL","PUSH","SMS"};
-// arraylist to keep the selected items
+
+                // arraylist to keep the selected items
                 final ArrayList<Integer> seletedItems=new ArrayList<>();
                 AlertDialog dialog_settings = new AlertDialog.Builder(this)
                                     .setTitle("訊息通知設定")
-                                    .setMultiChoiceItems(items,null, new DialogInterface.OnMultiChoiceClickListener() {
+                                    .setMultiChoiceItems(items,checkedValues, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
                                 if (isChecked) {
                                     // If the user checked the item, add it to the selected items
                                     seletedItems.add(indexSelected);
+                                    checkedValues[indexSelected]=true;
                                 } else if (seletedItems.contains(indexSelected)) {
                                     // Else, if the item is already in the array, remove it
                                     seletedItems.remove(Integer.valueOf(indexSelected));
+                                    checkedValues[indexSelected]=false;
                                 }
                             }
                         }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -171,11 +175,19 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 //  Your code when user clicked on OK
                                 //  You can write the code  to save the selected item here
+                                for(int i=0;i<items.length;i++) {
+                                    if (checkedValues[i]) {
+                                        mSETTINGS.child("/notify/"+items[i]).setValue(true);
+                                    }else{
+                                        mSETTINGS.child("/notify/"+items[i]).removeValue();
+                                    }
+                                }
                             }
                         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 //  Your code when user clicked on Cancel
+
                             }
                         }).create();
                 dialog_settings.show();
@@ -700,10 +712,26 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         });
     }
     private void SETTINGS() {
-
         mSETTINGS.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                if (master) {
+                    if (snapshot.child("/notify/EMAIL").getValue()!= null) {
+                        checkedValues[0]=true;
+                    } else {
+                        checkedValues[0]=false;
+                    }
+                    if (snapshot.child("/notify/PUSH").getValue() != null) {
+                        checkedValues[1]=true;
+                    } else {
+                        checkedValues[1]=false;
+                    }
+                    if (snapshot.child("/notify/SMS").getValue() != null) {
+                        checkedValues[2]=true;
+                    } else {
+                        checkedValues[2]=false;
+                    }
+                }
                 if (snapshot.child("X00").getValue() != null) {
                     X00.setText(snapshot.child("X00").getValue().toString());
                 }
