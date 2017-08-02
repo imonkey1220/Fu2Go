@@ -55,4 +55,5 @@
     <string name="facebook_application_id" translatable="false">823959004422329</string>
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="title_activity_device_io">DeviceIOActivity</string>
 </resources>

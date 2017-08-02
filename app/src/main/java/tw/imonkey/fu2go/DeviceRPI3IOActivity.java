@@ -37,7 +37,7 @@ import java.util.TimeZone;
 
 public class DeviceRPI3IOActivity extends AppCompatActivity {
     public static final String devicePrefs = "devicePrefs";
-    public static final String service="RPI3IO"; //GPIO智慧機 deviceType
+    public static final String service="RPI3IO"; //IO智慧機 deviceType
     CharSequence[] items = {"EMAIL","PUSH","SMS"};
     boolean[] checkedValues = new boolean[items.length];
     String deviceId, memberEmail;
@@ -423,14 +423,14 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp", ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y00").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y00=true");
+                    log("Y_input:"+memberEmail+":Y00=true");
                 }else{
                     cmd.clear();
                     cmd.put("Y00",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y00").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y00=false");
+                    log("Y_input:"+memberEmail+":Y00=false");
 
                 }
             }
@@ -444,7 +444,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y01").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y01=true");
+                    log("Y_input:"+memberEmail+":Y01=true");
 
                 }else{
                     cmd.clear();
@@ -452,7 +452,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y01").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y01=false");
+                    log("Y_input:"+memberEmail+":Y01=false");
 
                 }
             }
@@ -467,7 +467,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y02").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y02=true");
+                    log("Y_input:"+memberEmail+":Y02=true");
 
                 }else{
                     cmd.clear();
@@ -475,7 +475,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y02").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y02=false");
+                    log("Y_input:"+memberEmail+":Y02=false");
 
                 }
             }
@@ -490,7 +490,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y03").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y03=true");
+                    log("Y_input:"+memberEmail+":Y03=true");
 
                 }else{
                     cmd.clear();
@@ -498,7 +498,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y03").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y03=false");
+                    log("Y_input:"+memberEmail+":Y03=false");
                 }
             }
         });
@@ -512,14 +512,14 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y04").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y04=true");
+                    log("Y_input:"+memberEmail+":Y04=true");
                 }else{
                     cmd.clear();
                     cmd.put("Y04",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y04").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y04=false");
+                    log("Y_input:"+memberEmail+":Y04=false");
 
                 }
             }
@@ -533,7 +533,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y05").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y05=true");
+                    log("Y_input:"+memberEmail+":Y05=true");
 
                 }else{
                     cmd.clear();
@@ -541,7 +541,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y05").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y05=false");
+                    log("Y_input:"+memberEmail+":Y05=false");
 
                 }
             }
@@ -556,7 +556,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y06").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y06=true");
+                    log("Y_input:"+memberEmail+":Y06=true");
 
                 }else{
                     cmd.clear();
@@ -564,7 +564,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y06").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y06=false");
+                    log("Y_input:"+memberEmail+":Y06=false");
 
                 }
             }
@@ -579,7 +579,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y07").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y07=true");
+                    log("Y_input:"+memberEmail+":Y07=true");
 
                 }else{
                     cmd.clear();
@@ -587,7 +587,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
                     mYOUTPUT.child("Y07").setValue(cmd);
-                    log("Y_input:"+memberEmail+"->Y07=false");
+                    log("Y_input:"+memberEmail+":Y07=false");
                 }
             }
         });
