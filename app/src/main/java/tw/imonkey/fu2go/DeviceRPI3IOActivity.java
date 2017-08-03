@@ -38,14 +38,14 @@ import java.util.TimeZone;
 public class DeviceRPI3IOActivity extends AppCompatActivity {
     public static final String devicePrefs = "devicePrefs";
     public static final String service="RPI3IO"; //IO智慧機 deviceType
-    CharSequence[] items = {"EMAIL","PUSH","SMS"};
-    boolean[] checkedValues = new boolean[items.length];
+    CharSequence[] items = {"EMAIL","PUSH","SMS"};//notify_user type
+    boolean[] checkedValues = new boolean[items.length];//notify_user flag
     String deviceId, memberEmail;
     boolean master;
     ArrayList<String> users = new ArrayList<>();
     Map<String, Object> cmd = new HashMap<>();
     Map<String, Object> log = new HashMap<>();
-    DatabaseReference mUsers, mDevice,mLog,mXINPUT,mYOUTPUT,mSETTINGS;
+    DatabaseReference mUsers, mDevice,mState,mAlert,mLog,mXINPUT,mYOUTPUT,mSETTINGS;
     FirebaseListAdapter mAdapter;
     ListView userView ,logView;
     Switch Y00,Y01,Y02,Y03,Y04,Y05,Y06,Y07;
@@ -208,6 +208,8 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mDevice = FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId);
         mSETTINGS = FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId + "/SETTINGS");
         mLog=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/LOG/");
+        mAlert= FirebaseDatabase.getInstance().getReference("/DEVICE/"+ deviceId + "/alert");
+        mState=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/state/");
         mXINPUT= FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/X/");
         mYOUTPUT=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/Y/");
         mDevice.addValueEventListener(new ValueEventListener() {
