@@ -3,6 +3,7 @@ package tw.imonkey.fu2go;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -13,7 +14,7 @@ import com.google.firebase.storage.StorageReference;
 class rvDeviceHolder extends RecyclerView.ViewHolder  {
     private final TextView mPinField;
     private final TextView mPinStateField;
-    private final String mPinTypeField;
+    private final Switch mPinTypeField;
     private final TextView mTimeStampField ;
     private final ImageView mPhotoField;
     public rvDeviceHolder(View itemView) {
@@ -21,7 +22,7 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
         mPinField = (TextView) itemView.findViewById(R.id.textViewPin);
         mPinStateField=(TextView) itemView.findViewById(R.id.textViewPinState);
         mTimeStampField=(TextView)itemView.findViewById(R.id.textViewPinTimeStamp);
-        mPinTypeField="";
+        mPinTypeField=(Switch)itemView.findViewById(R.id.switchPin);
         mPhotoField =(ImageView) itemView.findViewById(R.id.imageViewPin);
     }
 
@@ -30,6 +31,13 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
     }
     void setPinState(String pinState) {
         mPinStateField.setText(pinState);
+    }
+    void setPinType(boolean isSwitch) {
+        if (isSwitch){
+            mPinTypeField.setVisibility(View.VISIBLE);
+        }else{
+            mPinTypeField.setVisibility(View.INVISIBLE);
+        }
     }
     void setTimeStamp(String timeStamp) {
         mTimeStampField.setText(timeStamp);

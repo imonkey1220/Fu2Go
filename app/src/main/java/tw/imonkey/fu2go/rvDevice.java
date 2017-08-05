@@ -35,10 +35,10 @@ public class rvDevice {
     public String getDescription() {
         return description;
     }
-    public String getpinType() {
+    public String getPinType() {
         return pinType;
     }
-    public String getpinState() {
+    public String getPinState() {
         return pinState;
     }
     public String getMemberEmail() {

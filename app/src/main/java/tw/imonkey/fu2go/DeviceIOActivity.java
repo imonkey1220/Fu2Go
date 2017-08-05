@@ -236,14 +236,24 @@ public class DeviceIOActivity extends AppCompatActivity {
 
             @Override
             public void populateViewHolder( rvDeviceHolder holder, rvDevice device, final int position) {
-            //todo
+                //todo
                 holder.setPin(device.getPin());
-                holder.setPinState(device.getpinState());
+                holder.setPinState(device.getPinState());
                 Calendar timeStamp = Calendar.getInstance();
                 timeStamp.setTimeInMillis(Long.parseLong(device.getTimeStamp().toString()));
                 SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss MM/dd", Locale.TAIWAN);
                 holder.setTimeStamp(df.format(timeStamp.getTime()));
-                holder.setPhoto(device.getPinId());
+                if (device.getPinId() != null) {
+                    holder.setPhoto(device.getPinId());
+                } else {
+                    holder.setPhoto("unknowPinPhoto");
+                }
+
+                if (device.getPinType()!= null) {
+                    holder.setPinType(true);
+                }else{
+                    holder.setPinType(false);
+                }
             }
         };
         RV4.setAdapter(mPinoutAdapter);
