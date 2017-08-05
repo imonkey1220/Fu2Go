@@ -11,29 +11,31 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 class rvDeviceHolder extends RecyclerView.ViewHolder  {
-    private final TextView mDeviceField;
-    private final TextView mMessageField;
-    private final TextView mDeviceTypeField;
+    private final TextView mPinField;
+    private final TextView mPinStateField;
+    private final String mPinTypeField;
+    private final TextView mTimeStampField ;
     private final ImageView mPhotoField;
     public rvDeviceHolder(View itemView) {
         super(itemView);
-        mDeviceField = (TextView) itemView.findViewById(R.id.deviceName);
-        mMessageField = (TextView) itemView.findViewById(R.id.deviceMessage);
-        mDeviceTypeField=(TextView) itemView.findViewById(R.id.deviceType);
-        mPhotoField =(ImageView) itemView.findViewById(R.id.deviceImage);
+        mPinField = (TextView) itemView.findViewById(R.id.textViewPin);
+        mPinStateField=(TextView) itemView.findViewById(R.id.textViewPinState);
+        mTimeStampField=(TextView)itemView.findViewById(R.id.textViewPinTimeStamp);
+        mPinTypeField="";
+        mPhotoField =(ImageView) itemView.findViewById(R.id.imageViewPin);
     }
 
-    void setDevice(String device) {
-        mDeviceField.setText(device);
+    void setPin(String pin) {
+        mPinField.setText(pin);
     }
-    void setDeviceType(String deviceType) {
-        mDeviceTypeField.setText(deviceType);
+    void setPinState(String pinState) {
+        mPinStateField.setText(pinState);
     }
-    void setMessage(String message) {
-        mMessageField.setText(message);
+    void setTimeStamp(String timeStamp) {
+        mTimeStampField.setText(timeStamp);
     }
-    void setPhoto(String Topics_id) {
-        String devicePhotoPath = "/devicePhoto/" +Topics_id;
+    void setPhoto(String pinId) {
+        String devicePhotoPath = "/devicePhoto/" +pinId;
         StorageReference mImageRef = FirebaseStorage.getInstance().getReference(devicePhotoPath);
         Glide.with(mPhotoField.getContext())
                 .using(new FirebaseImageLoader())

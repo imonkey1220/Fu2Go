@@ -4,63 +4,47 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class rvDevice {
-    private String companyId;
-    private String description;
-    private String device;
-    private String deviceType;
-    private String masterEmail;
-    private String topics_id; //=deviceId
+    private String pin;
+    private String pinId;
+    private String description ;
+    private String pinType;
+    private String pinState;
+    private String memberEmail;
     private Long timeStamp;
-    private Boolean connection;
-    private Map<String, Object> alert = new HashMap<>();
     public rvDevice() {
     }
 
-    public rvDevice(String topics_id,String companyId, String device, String deviceType,String description, String masterEmail,Long timeStamp,boolean connection,Map<String,Object> alert) {
+    public rvDevice(String pin,String pinId,String pinType,String pinState,String description, String memberEmail,Long timeStamp) {
 
-        this.companyId=companyId;
+        this.pin=pin;
+        this.pinId=pinId;
         this.description=description;
-        this.device=device;
-        this.deviceType=deviceType;
-        this.masterEmail=masterEmail;
-        this.topics_id=topics_id;
+        this.pinType=pinType;
+        this.pinState=pinState;
+        this.memberEmail=memberEmail;
         this.timeStamp=timeStamp;
-        this.connection=connection;
-        this.alert=alert;
+
     }
 
-    public String getCompanyId() {
-        return companyId;
+    public String getPin() {
+        return pin;
     }
-
+    public String getPinId() {
+        return pinId;
+    }
     public String getDescription() {
         return description;
     }
-
-    public String getDevice() {
-        return device;
+    public String getpinType() {
+        return pinType;
     }
-    public String getDeviceType() {
-        return deviceType;
+    public String getpinState() {
+        return pinState;
     }
-
-    public String getMasterEmail() {
-        return masterEmail;
+    public String getMemberEmail() {
+        return memberEmail;
     }
-
-    public String getTopics_id() {
-        return topics_id;
-    }
-
     public Long getTimeStamp() {
         return timeStamp;
-    }
-
-    public Boolean getConnection() {
-        return connection;
-    }
-
-    public Map<String,Object> getAlert() {
-        return alert;
     }
 }

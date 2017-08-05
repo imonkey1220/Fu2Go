@@ -236,72 +236,26 @@ public class DeviceIOActivity extends AppCompatActivity {
 
             @Override
             public void populateViewHolder( rvDeviceHolder holder, rvDevice device, final int position) {
-
+            //todo
+                holder.setPin(device.getPin());
+                holder.setPinState(device.getpinState());
+                Calendar timeStamp = Calendar.getInstance();
+                timeStamp.setTimeInMillis(Long.parseLong(device.getTimeStamp().toString()));
+                SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss MM/dd", Locale.TAIWAN);
+                holder.setTimeStamp(df.format(timeStamp.getTime()));
+                holder.setPhoto(device.getPinId());
             }
         };
         RV4.setAdapter(mPinoutAdapter);
         RV4.addOnItemTouchListener(new RecyclerViewTouchListener(getApplicationContext(), RV4, new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                deviceId = mPinoutAdapter.getRef(position).getKey();
-                mPinoutAdapter.getRef(position).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        String deviceType = snapshot.child("deviceType").getValue().toString();
-                        switch (deviceType) {
-                            case "主機": {
-                                Intent intent = new Intent(DeviceIOActivity.this, BossActivity.class);
-                                intent.putExtra("deviceId", deviceId);
-                                intent.putExtra("memberEmail", memberEmail);
-                                if (snapshot.child("masterEmail").getValue().toString().equals(memberEmail)) {
-                                    intent.putExtra("master", true);
-                                } else {
-                                    intent.putExtra("master", false);
-                                }
-                                startActivity(intent);
-                                break;
-                            }
-
-                            case "GPIO智慧機": {
-                                Intent intent = new Intent(DeviceIOActivity.this, DeviceRPI3IOActivity.class);
-                                intent.putExtra("deviceId", deviceId);
-                                intent.putExtra("memberEmail", memberEmail);
-                                if (snapshot.child("masterEmail").getValue().toString().equals(memberEmail)) {
-                                    intent.putExtra("master", true);
-                                } else {
-                                    intent.putExtra("master", false);
-                                }
-                                startActivity(intent);
-                                break;
-                            }
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                    }
-                });
-
+                //todo
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                //delDevice
-                final String deviceId=mPinoutAdapter.getRef(position).getKey();
-                String company_device=((TextView)view.findViewById(R.id.deviceName)).getText().toString();
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(DeviceIOActivity.this);
-                alertDialog.setMessage("刪除智慧機:"+company_device);
-                alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                  //      mDelDevice=FirebaseDatabase.getInstance().getReference("/DEVICE/"+deviceId);
-                   //     mDelDevice.child("/users/"+memberEmail.replace(".", "_")).removeValue();
-                   //     FirebaseMessaging.getInstance().unsubscribeFromTopic(deviceId);
-                        dialog.cancel();
-                    }
-                });
-                alertDialog.show();
+                //todo
             }
         }));
     }
