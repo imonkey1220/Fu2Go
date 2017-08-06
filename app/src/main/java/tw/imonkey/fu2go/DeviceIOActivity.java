@@ -61,11 +61,19 @@ public class DeviceIOActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "智慧機設定", Snackbar.LENGTH_LONG)
+                        .setAction("Go!", null).show();
+                Intent intent = new Intent(DeviceIOActivity.this, DeviceRPI3IOActivity.class);
+                intent.putExtra("deviceId", deviceId);
+                intent.putExtra("memberEmail", memberEmail);
+                startActivity(intent);
             }
         });
+
+        init();
+        getPinState();
     }
+
 
     @Override
     protected void onDestroy() {
@@ -250,9 +258,9 @@ public class DeviceIOActivity extends AppCompatActivity {
                 }
 
                 if (device.getPinType()!= null) {
-                    holder.setPinType(true);
+                    holder.setPinType(true);//YOUTPUT
                 }else{
-                    holder.setPinType(false);
+                    holder.setPinType(false);//XINPUT
                 }
             }
         };
@@ -265,7 +273,7 @@ public class DeviceIOActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(View view, int position) {
-                //todo
+                //todo:Pin Settings
             }
         }));
     }
