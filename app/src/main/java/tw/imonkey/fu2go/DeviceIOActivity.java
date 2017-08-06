@@ -248,6 +248,8 @@ public class DeviceIOActivity extends AppCompatActivity {
                 //todo
                 holder.setPin(device.getPin());
                 holder.setPinState(device.getPinState());
+                holder.setPinType(device.getPinType());
+                holder.setPinFunction(device.getPinFunction());
                 Calendar timeStamp = Calendar.getInstance();
                 timeStamp.setTimeInMillis(Long.parseLong(device.getTimeStamp().toString()));
                 SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss MM/dd", Locale.TAIWAN);
@@ -256,12 +258,6 @@ public class DeviceIOActivity extends AppCompatActivity {
                     holder.setPhoto(device.getPinId());
                 } else {
                     holder.setPhoto("unknowPinPhoto");
-                }
-
-                if (device.getPinType()!= null) {
-                    holder.setPinType(true);//YOUTPUT
-                }else{
-                    holder.setPinType(false);//XINPUT
                 }
             }
         };
@@ -275,6 +271,7 @@ public class DeviceIOActivity extends AppCompatActivity {
             @Override
             public void onLongClick(View view, int position) {
                 //todo:Pin Settings
+
             }
         }));
     }

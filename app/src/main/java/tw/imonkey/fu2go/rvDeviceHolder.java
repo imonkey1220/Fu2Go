@@ -13,6 +13,7 @@ import com.google.firebase.storage.StorageReference;
 
 class rvDeviceHolder extends RecyclerView.ViewHolder  {
     private final TextView mPinField;
+    private final TextView mPinFunctionField;
     private final TextView mPinStateField;
     private final Switch mPinTypeField;
     private final TextView mTimeStampField ;
@@ -24,16 +25,18 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
         mTimeStampField=(TextView)itemView.findViewById(R.id.textViewPinTimeStamp);
         mPinTypeField=(Switch)itemView.findViewById(R.id.switchPin);
         mPhotoField =(ImageView) itemView.findViewById(R.id.imageViewPin);
+        mPinFunctionField= (TextView) itemView.findViewById(R.id.textViewPinFunction);
     }
 
     void setPin(String pin) {
         mPinField.setText(pin);
     }
+    void setPinFunction(String pinFunction){ mPinFunctionField.setText(pinFunction);}
     void setPinState(String pinState) {
         mPinStateField.setText(pinState);
     }
-    void setPinType(boolean isSwitch) {
-        if (isSwitch){
+    void setPinType(String pinType) {
+        if (pinType.contains("Y")){
             mPinTypeField.setVisibility(View.VISIBLE);
         }else{
             mPinTypeField.setVisibility(View.INVISIBLE);
