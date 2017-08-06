@@ -8,13 +8,13 @@ public class rvDevice {
     private String pinId;
     private String pinFunction ;
     private String pinType;
-    private String pinState;
+    private Boolean pinState;
     private String memberEmail;
     private Long timeStamp;
     public rvDevice() {
     }
 
-    public rvDevice(String pin,String pinId,String pinType,String pinState,String function, String memberEmail,Long timeStamp) {
+    public rvDevice(String pin,String pinId,String pinType,Boolean pinState,String pinFunction, String memberEmail,Long timeStamp) {
 
         this.pin=pin;
         this.pinId=pinId;
@@ -38,7 +38,7 @@ public class rvDevice {
     public String getPinType() {
         return pinType;
     }
-    public String getPinState() {
+    public Boolean getPinState() {
         return pinState;
     }
     public String getMemberEmail() {

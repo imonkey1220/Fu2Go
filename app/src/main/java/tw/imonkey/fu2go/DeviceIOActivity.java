@@ -256,7 +256,7 @@ public class DeviceIOActivity extends AppCompatActivity {
             public void populateViewHolder( rvDeviceHolder holder, rvDevice device, final int position) {
                 //todo
                 holder.setPin(device.getPin());
-                holder.setPinState(device.getPinState());
+                holder.setPinState(device.getPinState().toString());
                 holder.setPinType(device.getPinType());
                 holder.setPinFunction(device.getPinFunction());
                 Calendar timeStamp = Calendar.getInstance();
