@@ -61,13 +61,20 @@ public class DeviceIOActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "智慧機設定", Snackbar.LENGTH_LONG)
-                        .setAction("Go!", null).show();
-                Intent intent = new Intent(DeviceIOActivity.this, DeviceRPI3IOActivity.class);
-                intent.putExtra("deviceId", deviceId);
-                intent.putExtra("memberEmail", memberEmail);
-                intent.putExtra("master", master);
-                startActivity(intent);
+                Snackbar snackbar = Snackbar.make(view, "智慧機功能設定?", Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(DeviceIOActivity.this, DeviceRPI3IOActivity.class);
+                                intent.putExtra("deviceId", deviceId);
+                                intent.putExtra("memberEmail", memberEmail);
+                                intent.putExtra("master", master);
+                                startActivity(intent);
+                            }
+                        });
+
+                snackbar.show();
+
             }
         });
 
