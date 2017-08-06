@@ -66,6 +66,7 @@ public class DeviceIOActivity extends AppCompatActivity {
                 Intent intent = new Intent(DeviceIOActivity.this, DeviceRPI3IOActivity.class);
                 intent.putExtra("deviceId", deviceId);
                 intent.putExtra("memberEmail", memberEmail);
+                intent.putExtra("master", master);
                 startActivity(intent);
             }
         });
