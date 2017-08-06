@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageViewPin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_weight="1"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
@@ -18,14 +18,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Pin" />
+        android:text="Pin"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewPinFunction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="功能" />
+        android:text="功能"
+        android:textAlignment="center"
+        android:textColor="@color/com_facebook_button_send_background_color"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +46,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="狀態"
-            android:textSize="24sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewPinTimeStamp"
@@ -47,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="timeStamp"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
 
     </LinearLayout>
 
