@@ -594,11 +594,13 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y00/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                  if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y00.setChecked(true);
-                    }else{
+                    } else {
                         Y00.setChecked(false);
                     }
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -607,11 +609,13 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y01/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                    if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y01.setChecked(true);
-                    }else{
+                    } else {
                         Y01.setChecked(false);
                     }
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -620,11 +624,13 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y02/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                    if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y02.setChecked(true);
-                    }else{
+                    } else {
                         Y02.setChecked(false);
                     }
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -632,12 +638,13 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y03/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y03.setChecked(true);
-                    }else{
+                    } else {
                         Y03.setChecked(false);
                     }
-
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -646,12 +653,14 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y04/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue().equals(true)) {
+                    if (snapshot.getValue() != null) {
                         Y04.setChecked(true);
-                    }else{
+                    } else {
                         Y04.setChecked(false);
                     }
                 }
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
@@ -659,12 +668,14 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y05/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y05.setChecked(true);
-                    }else{
+                    } else {
                         Y05.setChecked(false);
                     }
                 }
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
@@ -672,12 +683,14 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y06/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                    if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y06.setChecked(true);
-                    }else{
+                    } else {
                         Y06.setChecked(false);
                     }
                 }
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
@@ -685,15 +698,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y07/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
-                    if(snapshot.getValue().equals(true)) {
+                if (snapshot.getValue() != null) {
+                    if (snapshot.getValue().equals(true)) {
                         Y07.setChecked(true);
-                    }else{
+                    } else {
                         Y07.setChecked(false);
                     }
                 }
+            }
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
     }
     private void SETTINGS() {
