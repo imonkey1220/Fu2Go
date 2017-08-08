@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class rvDevice {
     private String pin;
+    private String name;
     private String pinId;
     private String pinFunction ;
     private String pinType;
@@ -14,9 +15,10 @@ public class rvDevice {
     public rvDevice() {
     }
 
-    public rvDevice(String pin,String pinId,String pinType,Boolean pinState,String pinFunction, String memberEmail,Long timeStamp) {
+    public rvDevice(String pin,String name,String pinId,String pinType,Boolean pinState,String pinFunction, String memberEmail,Long timeStamp) {
 
         this.pin=pin;
+        this.name=name;
         this.pinId=pinId;
         this.pinFunction=pinFunction;
         this.pinType=pinType;
@@ -28,6 +30,9 @@ public class rvDevice {
 
     public String getPin() {
         return pin;
+    }
+    public String getName() {
+        return name;
     }
     public String getPinId() {
         return pinId;

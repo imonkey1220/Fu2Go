@@ -889,15 +889,17 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             });
         }
     }
-    private void showDialog(final String PINOUT) {
+    private void showDialog(final String pin) {
         final EditText input = new EditText(this);
         new AlertDialog.Builder(this)
-                .setTitle(PINOUT)
-                .setMessage("請輸入"+PINOUT+"功能")
+                .setTitle(pin)
+                .setMessage("請輸入"+pin+"功能")
                 .setView(input)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        mSETTINGS.child(PINOUT).setValue(input.getText().toString());
+                        mSETTINGS.child(pin).setValue(input.getText().toString());
+                        mState.child(pin+"/name/").setValue(input.getText().toString());
+                        mState.child(pin+"/pinId/").setValue(mState.push().getKey());
                     }
                 })
                 .show();
