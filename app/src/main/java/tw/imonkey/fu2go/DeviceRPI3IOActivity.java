@@ -45,7 +45,7 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
     ArrayList<String> users = new ArrayList<>();
     Map<String, Object> cmd = new HashMap<>();
     Map<String, Object> log = new HashMap<>();
-    DatabaseReference mUsers, mDevice,mState,mAlert,mLog,mXINPUT,mYOUTPUT,mSETTINGS;
+    DatabaseReference mUsers, mDevice,mState,mAlert,mLog,mSETTINGS;
     FirebaseListAdapter mAdapter;
     ListView userView ,logView;
     Switch Y00,Y01,Y02,Y03,Y04,Y05,Y06,Y07;
@@ -210,8 +210,6 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mLog=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/LOG/");
         mAlert= FirebaseDatabase.getInstance().getReference("/DEVICE/"+ deviceId + "/alert");
         mState=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/state/");
-        mXINPUT= FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/X/");
-        mYOUTPUT=FirebaseDatabase.getInstance().getReference("/DEVICE/" + deviceId+"/Y/");
         mDevice.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -301,11 +299,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         }
     }
     private void mXINPUTListener(){
-        mXINPUT.child("X00").addValueEventListener(new ValueEventListener() {
+        mState.child("X00/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X00").getValue()!=null) {
-                    if(snapshot.child("X00").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X00.setBackgroundColor(Color.RED);
                     }else{
                         X00.setBackgroundColor(Color.BLUE);
@@ -316,11 +314,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mXINPUT.child("X01").addValueEventListener(new ValueEventListener() {
+        mState.child("X01/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X01").getValue()!=null) {
-                    if(snapshot.child("X01").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X01.setBackgroundColor(Color.RED);
                     }else{
                         X01.setBackgroundColor(Color.BLUE);
@@ -330,11 +328,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mXINPUT.child("X02").addValueEventListener(new ValueEventListener() {
+        mState.child("X02/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X02").getValue()!=null) {
-                    if(snapshot.child("X02").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X02.setBackgroundColor(Color.RED);
                     }else{
                         X02.setBackgroundColor(Color.BLUE);
@@ -344,11 +342,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mXINPUT.child("X03").addValueEventListener(new ValueEventListener() {
+        mState.child("X03/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X03").getValue()!=null) {
-                    if(snapshot.child("X03").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X03.setBackgroundColor(Color.RED);
                     }else{
                         X03.setBackgroundColor(Color.BLUE);
@@ -358,11 +356,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mXINPUT.child("X04").addValueEventListener(new ValueEventListener() {
+        mState.child("X04/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X04").getValue()!=null) {
-                    if(snapshot.child("X04").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X04.setBackgroundColor(Color.RED);
                     }else{
                         X04.setBackgroundColor(Color.BLUE);
@@ -372,11 +370,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mXINPUT.child("X05").addValueEventListener(new ValueEventListener() {
+        mState.child("X05/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X05").getValue()!=null) {
-                    if(snapshot.child("X05").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X05.setBackgroundColor(Color.RED);
                     }else{
                         X05.setBackgroundColor(Color.BLUE);
@@ -386,11 +384,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mXINPUT.child("X06").addValueEventListener(new ValueEventListener() {
+        mState.child("X06/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X06").getValue()!=null) {
-                    if(snapshot.child("X06").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X06.setBackgroundColor(Color.RED);
                     }else{
                         X06.setBackgroundColor(Color.BLUE);
@@ -400,11 +398,11 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mXINPUT.child("X07").addValueEventListener(new ValueEventListener() {
+        mState.child("X07/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("X07").getValue()!=null) {
-                    if(snapshot.child("X07").getValue().equals(true)) {
+                if (snapshot.getValue()!=null) {
+                    if(snapshot.getValue().equals(true)) {
                         X07.setBackgroundColor(Color.RED);
                     }else{
                         X07.setBackgroundColor(Color.BLUE);
@@ -421,19 +419,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y00.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y00",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp", ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y00").setValue(cmd);
+                    mState.child("Y00").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y00=true");
                 }else{
                     cmd.clear();
-                    cmd.put("Y00",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y00").setValue(cmd);
+                    mState.child("Y00").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y00=false");
-
                 }
             }
         });
@@ -442,18 +439,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y01.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y01",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y01").setValue(cmd);
+                    mState.child("Y01").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y01=true");
 
                 }else{
                     cmd.clear();
-                    cmd.put("Y01",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y01").setValue(cmd);
+                    mState.child("Y01").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y01=false");
 
                 }
@@ -465,18 +462,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y02.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y02",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y02").setValue(cmd);
+                    mState.child("Y02").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y02=true");
 
                 }else{
                     cmd.clear();
-                    cmd.put("Y02",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y02").setValue(cmd);
+                    mState.child("Y02").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y02=false");
 
                 }
@@ -488,18 +485,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y03.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y03",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y03").setValue(cmd);
+                    mState.child("Y03").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y03=true");
 
                 }else{
                     cmd.clear();
-                    cmd.put("Y03",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y03").setValue(cmd);
+                    mState.child("Y03").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y03=false");
                 }
             }
@@ -510,17 +507,17 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y04.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y04",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y04").setValue(cmd);
+                    mState.child("Y04").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y04=true");
                 }else{
                     cmd.clear();
-                    cmd.put("Y04",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y04").setValue(cmd);
+                    mState.child("Y04").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y04=false");
 
                 }
@@ -531,18 +528,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y05.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y05",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y05").setValue(cmd);
+                    mState.child("Y05").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y05=true");
 
                 }else{
                     cmd.clear();
-                    cmd.put("Y05",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y05").setValue(cmd);
+                    mState.child("Y05").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y05=false");
 
                 }
@@ -554,18 +551,18 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y06.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y06",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y06").setValue(cmd);
+                    mState.child("Y06").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y06=true");
 
                 }else{
                     cmd.clear();
-                    cmd.put("Y06",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y06").setValue(cmd);
+                    mState.child("Y06").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y06=false");
 
                 }
@@ -577,138 +574,124 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Y07.isChecked()) {
                     cmd.clear();
-                    cmd.put("Y07",true);
+                    cmd.put("pinState",true);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y07").setValue(cmd);
+                    mState.child("Y07").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y07=true");
 
                 }else{
                     cmd.clear();
-                    cmd.put("Y07",false);
+                    cmd.put("pinState",false);
                     cmd.put("memberEmail",memberEmail);
                     cmd.put("timeStamp",ServerValue.TIMESTAMP);
-                    mYOUTPUT.child("Y07").setValue(cmd);
+                    mState.child("Y07").updateChildren(cmd);
                     log("Y_input:"+memberEmail+":Y07=false");
                 }
             }
         });
 
-        mYOUTPUT.child("Y00").addValueEventListener(new ValueEventListener() {
+        mState.child("Y00/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y00").getValue()!=null) {
-                    if(snapshot.child("Y00").getValue().equals(true)) {
+                  if(snapshot.getValue().equals(true)) {
                         Y00.setChecked(true);
                     }else{
                         Y00.setChecked(false);
                     }
-                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mYOUTPUT.child("Y01").addValueEventListener(new ValueEventListener() {
+        mState.child("Y01/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y01").getValue()!=null) {
-                    if(snapshot.child("Y01").getValue().equals(true)) {
+                    if(snapshot.getValue().equals(true)) {
                         Y01.setChecked(true);
                     }else{
                         Y01.setChecked(false);
                     }
-                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mYOUTPUT.child("Y02").addValueEventListener(new ValueEventListener() {
+        mState.child("Y02/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y02").getValue()!=null) {
-                    if(snapshot.child("Y02").getValue().equals(true)) {
+                    if(snapshot.getValue().equals(true)) {
                         Y02.setChecked(true);
                     }else{
                         Y02.setChecked(false);
                     }
-                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-        mYOUTPUT.child("Y03").addValueEventListener(new ValueEventListener() {
+        mState.child("Y03/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y03").getValue()!=null) {
-                    if(snapshot.child("Y03").getValue().equals(true)) {
+                if(snapshot.getValue().equals(true)) {
                         Y03.setChecked(true);
                     }else{
                         Y03.setChecked(false);
                     }
-                }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mYOUTPUT.child("Y04").addValueEventListener(new ValueEventListener() {
+        mState.child("Y04/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y04").getValue()!=null) {
-                    if(snapshot.child("Y04").getValue().equals(true)) {
+                if(snapshot.getValue().equals(true)) {
                         Y04.setChecked(true);
                     }else{
                         Y04.setChecked(false);
                     }
                 }
-            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mYOUTPUT.child("Y05").addValueEventListener(new ValueEventListener() {
+        mState.child("Y05/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y05").getValue()!=null) {
-                    if(snapshot.child("Y05").getValue().equals(true)) {
+                if(snapshot.getValue().equals(true)) {
                         Y05.setChecked(true);
                     }else{
                         Y05.setChecked(false);
                     }
                 }
-            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mYOUTPUT.child("Y06").addValueEventListener(new ValueEventListener() {
+        mState.child("Y06/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y06").getValue()!=null) {
-                    if(snapshot.child("Y06").getValue().equals(true)) {
+                    if(snapshot.getValue().equals(true)) {
                         Y06.setChecked(true);
                     }else{
                         Y06.setChecked(false);
                     }
                 }
-            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        mYOUTPUT.child("Y07").addValueEventListener(new ValueEventListener() {
+        mState.child("Y07/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.child("Y07").getValue()!=null) {
-                    if(snapshot.child("Y07").getValue().equals(true)) {
+
+                    if(snapshot.getValue().equals(true)) {
                         Y07.setChecked(true);
                     }else{
                         Y07.setChecked(false);
                     }
                 }
-            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
