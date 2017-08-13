@@ -45,8 +45,6 @@ public class DeviceIOActivity extends AppCompatActivity {
     String deviceId, memberEmail;
     boolean master;
     ArrayList<String> users = new ArrayList<>();
-    Map<String, Object> cmd = new HashMap<>();
-    Map<String, Object> log = new HashMap<>();
     DatabaseReference mUsers, mDevice,mState,mAlert,mLog,mXINPUT,mYOUTPUT,mSETTINGS;
     ListView userView;
     FirebaseRecyclerAdapter mPinoutAdapter;

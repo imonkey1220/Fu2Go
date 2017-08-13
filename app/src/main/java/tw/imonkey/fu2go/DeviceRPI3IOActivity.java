@@ -653,9 +653,9 @@ public class DeviceRPI3IOActivity extends AppCompatActivity {
         mState.child("Y04/pinState/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.getValue() != null) {
                 if (snapshot.getValue().equals(true)) {
-                    if (snapshot.getValue() != null) {
-                        Y04.setChecked(true);
+                    Y04.setChecked(true);
                     } else {
                         Y04.setChecked(false);
                     }
