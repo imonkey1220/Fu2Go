@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -45,6 +46,7 @@ public class DeviceIOActivity extends AppCompatActivity {
     String deviceId, memberEmail;
     boolean master;
     ArrayList<String> users = new ArrayList<>();
+    Map<String, Object> state = new HashMap<>();
     DatabaseReference mUsers, mDevice,mState,mAlert,mLog,mXINPUT,mYOUTPUT,mSETTINGS;
     ListView userView;
     FirebaseRecyclerAdapter mPinoutAdapter;
@@ -273,6 +275,22 @@ public class DeviceIOActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 //todo
+           if (mPinoutAdapter.getRef(position).child("pinType").toString().contains("Y")){
+              if(mPinoutAdapter.getRef(position).child("pinState").toString().equals("true")){
+                  state.clear();
+                  state.put("memberEmail", memberEmail);
+                  state.put("pinState",false);
+                  state.put("timeStamp", ServerValue.TIMESTAMP);
+                  mState.child(mPinoutAdapter.getRef(position).child("pinType").toString()).updateChildren(state);
+              }else{
+                  state.clear();
+                  state.put("memberEmail", memberEmail);
+                  state.put("pinState",true);
+                  state.put("timeStamp", ServerValue.TIMESTAMP);
+                  mState.child(mPinoutAdapter.getRef(position).child("pinType").toString()).updateChildren(state);
+
+              }
+           }
             }
 
             @Override

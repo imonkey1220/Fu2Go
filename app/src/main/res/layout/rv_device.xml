@@ -6,68 +6,75 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageViewPin"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="1.08"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-    <TextView
-        android:id="@+id/textViewPin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pin"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_light"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textViewPinFunction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="功能"
-        android:textAlignment="center"
-        android:textColor="@color/com_facebook_button_send_background_color"
-        android:textSize="18sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1.08"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewPinState"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="狀態"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageViewPin"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1.08"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-        <TextView
-            android:id="@+id/textViewPinTimeStamp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="timeStamp"
-            android:textAlignment="textEnd"
-            android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
+            android:layout_height="match_parent"
+            android:layout_weight="1.08"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pin"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_orange_light"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewPinFunction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="功能"
+                android:textAlignment="center"
+                android:textColor="@color/com_facebook_button_send_background_color"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewPinState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="狀態"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewPinTimeStamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="timeStamp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <Switch
-        android:id="@+id/switchPin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.51"
-        android:checked="false"
-        android:showText="true"
-        android:splitTrack="false"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        tools:checked="false" />
 
 </LinearLayout>

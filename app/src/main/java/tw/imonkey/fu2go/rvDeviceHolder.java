@@ -15,7 +15,7 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
     private final TextView mPinField;
     private final TextView mPinFunctionField;
     private final TextView mPinStateField;
-    private final Switch mPinTypeField;
+ //   private final Switch mPinTypeField;
     private final TextView mTimeStampField ;
     private final ImageView mPhotoField;
     public rvDeviceHolder(View itemView) {
@@ -23,7 +23,7 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
         mPinField = (TextView) itemView.findViewById(R.id.textViewPin);
         mPinStateField=(TextView) itemView.findViewById(R.id.textViewPinState);
         mTimeStampField=(TextView)itemView.findViewById(R.id.textViewPinTimeStamp);
-        mPinTypeField=(Switch)itemView.findViewById(R.id.switchPin);
+     //   mPinTypeField=(Switch)itemView.findViewById(R.id.switchPin);
         mPhotoField =(ImageView) itemView.findViewById(R.id.imageViewPin);
         mPinFunctionField= (TextView) itemView.findViewById(R.id.textViewPinFunction);
     }
@@ -37,9 +37,9 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
     }
     void setPinType(String pinType) {
         if (pinType.contains("Y")){
-            mPinTypeField.setVisibility(View.VISIBLE);
+  //          mPinTypeField.setVisibility(View.VISIBLE);
         }else{
-            mPinTypeField.setVisibility(View.INVISIBLE);
+  //          mPinTypeField.setVisibility(View.INVISIBLE);
         }
     }
     void setTimeStamp(String timeStamp) {
