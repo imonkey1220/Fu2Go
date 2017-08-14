@@ -275,22 +275,30 @@ public class DeviceIOActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 //todo
-           if (mPinoutAdapter.getRef(position).child("pinType").toString().contains("Y")){
-              if(mPinoutAdapter.getRef(position).child("pinState").toString().equals("true")){
-                  state.clear();
-                  state.put("memberEmail", memberEmail);
-                  state.put("pinState",false);
-                  state.put("timeStamp", ServerValue.TIMESTAMP);
-                  mState.child(mPinoutAdapter.getRef(position).child("pinType").toString()).updateChildren(state);
-              }else{
-                  state.clear();
-                  state.put("memberEmail", memberEmail);
-                  state.put("pinState",true);
-                  state.put("timeStamp", ServerValue.TIMESTAMP);
-                  mState.child(mPinoutAdapter.getRef(position).child("pinType").toString()).updateChildren(state);
+                mPinoutAdapter.getRef(position).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                      if (snapshot.child("pinType").getValue().equals("Y")){
+                          if(snapshot.child("pinState").getValue()==true) {
+                              state.clear();
+                              state.put("memberEmail", memberEmail);
+                              state.put("pinState",false);
+                              state.put("timeStamp", ServerValue.TIMESTAMP);
+                              mState.child(snapshot.getKey()).updateChildren(state);
+                          }else{
+                              state.clear();
+                              state.put("memberEmail", memberEmail);
+                              state.put("pinState",true);
+                              state.put("timeStamp", ServerValue.TIMESTAMP);
+                              mState.child(snapshot.getKey()).updateChildren(state);
+                          }
+                      }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-              }
-           }
+                    }
+                });
             }
 
             @Override

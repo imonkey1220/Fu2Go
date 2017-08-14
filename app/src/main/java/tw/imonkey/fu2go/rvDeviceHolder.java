@@ -35,13 +35,7 @@ class rvDeviceHolder extends RecyclerView.ViewHolder  {
     void setPinState(String pinState) {
         mPinStateField.setText(pinState);
     }
-    void setPinType(String pinType) {
-        if (pinType.contains("Y")){
-  //          mPinTypeField.setVisibility(View.VISIBLE);
-        }else{
-  //          mPinTypeField.setVisibility(View.INVISIBLE);
-        }
-    }
+    void setPinType(String pinType) {}
     void setTimeStamp(String timeStamp) {
         mTimeStampField.setText(timeStamp);
     }
