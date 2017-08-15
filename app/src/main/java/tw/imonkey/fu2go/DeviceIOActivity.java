@@ -272,26 +272,19 @@ public class DeviceIOActivity extends AppCompatActivity {
         };
         RV4.setAdapter(mPinoutAdapter);
         RV4.addOnItemTouchListener(new RecyclerViewTouchListener(getApplicationContext(), RV4, new RecyclerViewClickListener() {
+            boolean pinState;
             @Override
             public void onClick(View view, int position) {
                 //todo
                 mPinoutAdapter.getRef(position).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                      if (snapshot.child("pinType").getValue().equals("Y")){
-                          if(snapshot.child("pinState").getValue()==true) {
-                              state.clear();
-                              state.put("memberEmail", memberEmail);
-                              state.put("pinState",false);
-                              state.put("timeStamp", ServerValue.TIMESTAMP);
-                              mState.child(snapshot.getKey()).updateChildren(state);
+                        if (snapshot.child("pinType").getValue().equals("Y")){
+                            if(snapshot.child("pinState").getValue().toString().equals("true")) {
+                                pinState=false;
                           }else{
-                              state.clear();
-                              state.put("memberEmail", memberEmail);
-                              state.put("pinState",true);
-                              state.put("timeStamp", ServerValue.TIMESTAMP);
-                              mState.child(snapshot.getKey()).updateChildren(state);
-                          }
+                                pinState=true;
+                            }
                       }
                     }
                     @Override
@@ -299,6 +292,12 @@ public class DeviceIOActivity extends AppCompatActivity {
 
                     }
                 });
+
+                state.clear();
+                state.put("memberEmail", memberEmail);
+                state.put("pinState",pinState);
+                state.put("timeStamp", ServerValue.TIMESTAMP);
+                mState.child(mPinoutAdapter.getRef(position).getKey()).updateChildren(state);
             }
 
             @Override
