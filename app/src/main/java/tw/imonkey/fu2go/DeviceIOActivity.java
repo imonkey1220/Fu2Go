@@ -272,10 +272,10 @@ public class DeviceIOActivity extends AppCompatActivity {
         };
         RV4.setAdapter(mPinoutAdapter);
         RV4.addOnItemTouchListener(new RecyclerViewTouchListener(getApplicationContext(), RV4, new RecyclerViewClickListener() {
+
             boolean pinState;
             @Override
             public void onClick(View view, int position) {
-                //todo
                 mPinoutAdapter.getRef(position).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -285,14 +285,11 @@ public class DeviceIOActivity extends AppCompatActivity {
                           }else{
                                 pinState=true;
                             }
-                      }
+                        }
                     }
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
+                    public void onCancelled(DatabaseError databaseError) {}
                 });
-
                 state.clear();
                 state.put("memberEmail", memberEmail);
                 state.put("pinState",pinState);
